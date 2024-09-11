@@ -38,7 +38,7 @@ In directory `mybench/traces`, there is a script `synthetic_traces_gen.py` to ge
 ```bash
 $ # Enter the directory `mybench/traces`
 $ cd traces
-$ # Generate 100M requests to 1M objects with zipfian distribution. The skewness $\alpha=1$.
+$ # Generate 100M requests to 1M objects with zipfian distribution. The skewness $\alpha=1$. 
 $ python3 synthetic_traces_gen.py -m 1000000 -n 100000000 --alpha 1.0 --bin-output zipf1.0_1_100.dat
 ```
 
@@ -73,6 +73,6 @@ As the workloads are generated, we use the script `mybench/run.sh` to evaluate p
 ```bash
 $ # Return the directory of `mybench`
 $ cd ..
-$ # The first parameter is the eviction policy. The second is the cache size (MB). The thrid is the trace file name. This script will run the evaluation 5 times, each with the thread count of 1, 2, 4, 8, 16, respectively.
-$ bash run.sh mobius 1000 zipf1.0_1_100.dat
+$ # The first parameter is the eviction policy. The second is the cache size (MB). The thrid is the trace file name. This script will run the evaluation 5 times, each with the thread count of 1, 2, 4, 8, 16, respectively. The generated trace zipf1.0_1_100.dat contains 1 million objects, each with a size of 4KB. Therefore, the total dataset size is 4GB, and a 10% cache (400MB) is recommended for evaluation.
+$ bash run.sh mobius 400 zipf1.0_1_100.dat
 ```
